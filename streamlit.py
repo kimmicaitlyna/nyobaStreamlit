@@ -1,32 +1,27 @@
 import streamlit as st
 
-st.set_page_config(page_title="Simulasi IoT Sederhana", layout="centered")
+# Set up page
+st.set_page_config(page_title="Simulasi IoT: Penyiraman Tanaman Otomatis", layout="centered")
 
-st.title("🔌 Simulasi IoT Sederhana untuk Anak SMP")
-
+st.title("🌱 Simulasi Penyiraman Tanaman Otomatis dengan IoT")
 st.markdown("""
-## 💡 Contoh Kasus: Lampu Otomatis
-Lampu akan menyala secara otomatis jika sensor mendeteksi bahwa ruangan gelap (nilai cahaya rendah).
+Sistem ini menggunakan **sensor kelembaban tanah** untuk memutuskan apakah tanaman perlu disiram atau tidak.
 """)
 
-# Input simulasi dari pengguna
-light_level = st.slider("Seberapa terang ruangan? (0 = Gelap, 100 = Terang)", 0, 100, 50)
+# Input simulasi kelembaban tanah
+soil_moisture = st.slider("Tingkat Kelembaban Tanah (%)", 0, 100, 50)
 
-# Simulasi logika IoT
-if light_level < 30:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Light_bulb_icon.svg/1200px-Light_bulb_icon.svg.png", width=100)
-    st.success("💡 Lampu otomatis MENYALA karena ruangan gelap.")
+# Simulasi logika penyiraman otomatis
+if soil_moisture < 30:
+    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Watering_can_icon.svg/1200px-Watering_can_icon.svg.png", width=100)
+    st.success("💧 Sistem Penyiraman AKTIF karena kelembaban tanah rendah.")
 else:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Lightbulb_off_font_awesome.svg/1200px-Lightbulb_off_font_awesome.svg.png", width=100)
-    st.info("💤 Lampu tetap MATI karena ruangan cukup terang.")
+    st.image("https://upload.wikimedia.org/wikipedia/commons/0/04/Watering_can_icon_no_watering.svg", width=100)
+    st.info("🌿 Tanaman cukup lembab, sistem penyiraman MATI.")
 
 # Penjelasan singkat
 st.markdown("""
 ---
-### 🤔 Kenapa Bisa Begitu?
-Ini adalah contoh dari **Internet of Things (IoT)**, di mana alat seperti sensor cahaya dan lampu dihubungkan untuk bekerja otomatis.
-
-Dengan logika: `Jika cahaya < 30 maka nyalakan lampu`.
-
-IoT membantu membuat kehidupan lebih mudah, hemat energi, dan pintar!
+### 🤔 Apa itu IoT?
+**Internet of Things (IoT)** memungkinkan perangkat (seperti sensor kelembaban tanah) untuk terhubung dan berinteraksi dengan perangkat lain secara otomatis. Dalam hal ini, sensor mengirimkan data tentang kelembaban tanah, dan sistem otomatis mengontrol penyiraman tanaman berdasarkan data tersebut.
 """)
